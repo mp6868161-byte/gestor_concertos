@@ -1,3 +1,4 @@
+# Projeto Gestor Concertos
 Este projeto foi desenvolvido com fins pedagógicos por um aluno do Curso Profissional de Gestão e Programação de Sistemas Informáticos (GPSI) – 10.º ano.
 
 O objetivo principal é demonstrar como implementar operações CRUD (Create, Read, Update, Delete) em Python utilizando:
@@ -9,7 +10,7 @@ validação de dados
 menus em terminal
 O projeto simula a gestão da entidade Utilizador.
 
-🎯 Objetivos Pedagógicos
+## 🎯 Objetivos Pedagógicos
 Com este projeto os alunos devem aprender a:
 
 organizar código em múltiplos ficheiros Python

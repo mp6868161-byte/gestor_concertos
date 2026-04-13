@@ -1,36 +1,47 @@
-def programa_concerto_escola():
-    # Dados imutáveis do evento
-    agenda = {
-        "Bon Jovi": {"hora": "18:00", "info": "Hard Rock clássico /."},
-        "AC/DC": {"hora": "20:00", "info": "Rock n' Roll puro /."},
-        "Aerosmith": {"hora": "22:00", "info": "Blues-Rock /."},
-        "Linkin Park": {"hora": "00:00", "info": "Rock Alternativo /."}
-    }
+class Artista:
+    def __init__(self, id, nome, genero, nacionalidade, hora_concerto):
+        self.id = id
+        self.nome = nome
+        self.genero = genero
+        self.nacionalidade = nacionalidade
+        self.hora_concerto = hora_concerto
 
-    while True:
-        print("\n" + "="*35)
-        print("="*35)
-        print("1. Informações dos Artistas")
-        print("2. Horário das Atuações")
-        print("3. Sair")
+    def __str__(self):
+        return (f"[{self.hora_concerto}] ID: {self.id} | {self.nome.upper()} "
+                f"({self.genero}) - {self.nacionalidade}")
 
-        opcao = input("\nEscolha uma opção: ")
 
-        if opcao == "1":
-            print("\n--- SOBRE OS ARTISTAS ---")
-            for banda, dados in agenda.items():
-                print(f"{banda}: {dados['info']}")
+class GerenciadorArtistas:
+    def __init__(self):
+        self.artistas = []
+        self.proximo_id = 1
 
-        elif opcao == "2":
-            print("\n--- HORÁRIOS ---")
-            for banda, dados in agenda.items():
-                print(f"{dados['hora']} -> {banda}")
+    def criar_artista(self, nome, genero, nacionalidade, hora_concerto):
+        novo_artista = Artista(self.proximo_id, nome, genero, nacionalidade, hora_concerto)
+        self.artistas.append(novo_artista)
+        self.proximo_id += 1
+        print(f" '{nome}' adicionado ao lineup das {hora_concerto}!")
 
-        elif opcao == "3":
-            print("Saindo...")
-            break
-        else:
-            print("Opção inválida.")
+    def listar_apenas_rock(self):
+        print("\n---  LINEUP: PALCO  ---")
+        encontrou = False
+        # Filtra ignorando maiúsculas/minúsculas
+        for artista in self.artistas:
+            if "rock" in artista.genero.lower():
+                print(artista)
+                encontrou = True
 
-if __name__ == "__main__":
-    programa_concerto_escola()
+        if not encontrou:
+            print("Nenhum artista de Rock escalado ainda.")
+
+
+
+crud = GerenciadorArtistas()
+
+# Adicionando artistas com o novo campo de hora
+crud.criar_artista("Jorge Ben Jor", "Samba-Rock", "Brasil", "21:00")
+crud.criar_artista("Arctic Monkeys", "Indie Rock", "UK", "23:30")
+crud.criar_artista("Daft Punk", "Eletrônica", "França", "01:00")
+crud.criar_artista("AC/DC", "Hard Rock", "Austrália", "22:00")
+
+crud.listar_apenas_rock()

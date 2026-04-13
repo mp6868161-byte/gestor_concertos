@@ -9,7 +9,6 @@ def programa_concerto_escola():
 
     while True:
         print("\n" + "="*35)
-        print("      ROCK NA ESCOLA")
         print("="*35)
         print("1. Informações dos Artistas")
         print("2. Horário das Atuações")
